@@ -22,4 +22,8 @@ Third Version:
 - Разнёс классы по отдельным файлам. (Classes.cs -> cars.cs && seaship.cs && aircraft.cs)
 - Было принято решение сделать поля speedMax и Price – методами.
 
+Fourth Version:
+- Время вынес из класса Vehicle в отдельный класс.
+- ...и остальное добро из 8 лабы...
+
 
