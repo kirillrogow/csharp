@@ -69,4 +69,12 @@ namespace Structure
             }
         }
 
-    }
+}
+//enum – время суток
+public enum Time
+{
+    Morning,
+    Afternoon,
+    Evening,
+    Night
+}
