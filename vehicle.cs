@@ -1,14 +1,15 @@
 using System;
 using Structure;
 
+
 namespace MainClass
 {
 
-    public class Vehicle
+    public class Vehicle : IComparable<Vehicle>
     {
         //поля
-        protected int price;
-        protected int speedMax;
+        //protected int price;
+        //protected int speedMax;
 
         //конструктор
         public Vehicle(string name, string country, int price)
@@ -23,22 +24,24 @@ namespace MainClass
             
             if (price <= 0)
                 throw new ArgumentException("Error: enter more value");
-            this.price = price;
+            this.Price = price;
         }
 
         //свойства
         public string Name { get; }
         public string Country { get; }
+        public int Price { get; protected set; }
+        public int SpeedMax { get; protected set; }
 
         //методы
         public void ChangePrice(int value)
         {
-            price = value;
+            Price = value;
         }
 
         public virtual void EditSpeed(int value)
         {
-            speedMax = value; //прошивка двигателя позволяет изменять максимальную скорость
+            SpeedMax = value; //прошивка двигателя позволяет изменять максимальную скорость
         }
         
         //enum – время суток
@@ -80,17 +83,26 @@ namespace MainClass
             switch (value)
             {
              case 1: ServiceMinsk attemptOne = new ServiceMinsk();
-                 attemptOne.Sell((int)nowTime, price);
+                 attemptOne.Sell((int)nowTime, Price);
                  break;
              case 2: ServiceGomel attemptTwo = new ServiceGomel();
-                 attemptTwo.Sell((int)nowTime, this.price);
+                 attemptTwo.Sell((int)nowTime, this.Price);
                  break;
              case 3: ServiceBrest attemptThree = new ServiceBrest();
-                 attemptThree.Sell((int)nowTime, this.price);
+                 attemptThree.Sell((int)nowTime, this.Price);
                  break;
              default: throw new IndexOutOfRangeException("Incorrect value");
             }
         }
 
+        public int CompareTo(Vehicle obj)
+        {
+            if (this.Price > obj.Price)
+                return 1;
+            if (this.Price < obj.Price)
+                return -1;
+            else
+                return 0;
+        }
     }
 }

@@ -4,12 +4,12 @@ namespace Structure
 {
     interface IService
     {
-        void Sell(int value, int price); //продажа транспортного средства
+        void Sell(int value, int price); //продажа автомобиля
 
     }
 
 
-    //структуры сервисов для продажи транспортного средства
+    //структуры сервисов для продажи автомобиля
     public struct ServiceMinsk : IService
     {
         //работает утром и вечером
